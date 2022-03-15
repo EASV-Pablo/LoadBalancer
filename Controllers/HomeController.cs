@@ -4,9 +4,6 @@ using Microsoft.Extensions.Logging;
 using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LoadBalancer.Controllers
 {
@@ -20,19 +17,17 @@ namespace LoadBalancer.Controllers
             _logger = logger;
         }
 
-        [HttpGet("sun/sunset")]
-        public OutputDto GetSunset([FromBody] InputDto input)
-        {
-            return requestSunset(input);
-        }
+        //[HttpGet("sun/sunset")]
+        //public OutputDto GetSunset([FromBody] InputDto input)
+        //{
+        //    return requestSunset(input);
+        //}
 
-        [HttpGet("sun/sunrise")]
-        public OutputDto GetSunrise([FromBody] InputDto input)
-        {
-            
-            RedirectPreserveMethod(new Uri(Program.machines.ElementAt(0).Url, "sun/sunrise").ToString());
-            return new OutputDto();
-        }
+        //[HttpGet("sun/sunrise")]
+        //public OutputDto GetSunrise([FromBody] InputDto input)
+        //{
+        //    return requestSunrise(input);
+        //}
 
         [HttpDelete("machines")]
         public IActionResult DeleteMachine([FromBody] Machine machine)
@@ -63,16 +58,16 @@ namespace LoadBalancer.Controllers
         }
 
         [HttpGet("machines")]
-        public List<Machine> GetMachines()
+        public Machine GetMachines()
         {
-            return Program.machines;
+            return Logic.LogicLB.getMachine();
         }
 
         private bool existsMachine(Machine machine)
         {
-            if(Program.machines.Exists(x => x.Url == machine.Url))
+            if (Program.machines.Exists(x => x.Url == machine.Url))
                 return true;
-            
+
             return false;
         }
 
@@ -92,10 +87,9 @@ namespace LoadBalancer.Controllers
             return new Random().Next(numberOfmachines);
         }
 
-        private OutputDto requestSunset(InputDto input)
+        private OutputDto requestSunset(Machine machine, InputDto input)
         {
-            Machine m = Program.machines.ElementAt(strategy());
-            RestClient client = new RestClient(new Uri(m.Url, "sun/sunset"));
+            RestClient client = new RestClient(new Uri(machine.Url, "sun/sunset"));
             var request = new RestRequest();
             request.AddJsonBody(input);
             var response = client.GetAsync<OutputDto>(request);
@@ -104,10 +98,9 @@ namespace LoadBalancer.Controllers
             return response.Result;
         }
 
-        private OutputDto requestSunrise(InputDto input)
+        private OutputDto requestSunrise(Machine machine, InputDto input)
         {
-            Machine m = Program.machines.ElementAt(strategy());
-            RestClient client = new RestClient(new Uri(m.Url, "sun/sunrise"));
+            RestClient client = new RestClient(new Uri(machine.Url, "sun/sunrise"));
             var request = new RestRequest();
             request.AddJsonBody(input);
             var response = client.GetAsync<OutputDto>(request);
@@ -115,5 +108,6 @@ namespace LoadBalancer.Controllers
 
             return response.Result;
         }
+
     }
 }

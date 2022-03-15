@@ -78,11 +78,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\P_MaN\\source\\repos\\LoadBalancer\\LoadBalancer.csproj",
+      "projectUniqueName": "C:\\Users\\P_MaN\\Documents\\GitHub\\LoadBalancer\\LoadBalancer.csproj",
       "projectName": "LoadBalancer",
-      "projectPath": "C:\\Users\\P_MaN\\source\\repos\\LoadBalancer\\LoadBalancer.csproj",
+      "projectPath": "C:\\Users\\P_MaN\\Documents\\GitHub\\LoadBalancer\\LoadBalancer.csproj",
       "packagesPath": "C:\\Users\\P_MaN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\P_MaN\\source\\repos\\LoadBalancer\\obj\\",
+      "outputPath": "C:\\Users\\P_MaN\\Documents\\GitHub\\LoadBalancer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\P_MaN\\AppData\\Roaming\\NuGet\\NuGet.Config",
