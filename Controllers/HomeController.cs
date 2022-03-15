@@ -33,6 +33,19 @@ namespace LoadBalancer.Controllers
         }
 
 
+        [HttpPost("sun/sunset")]
+        public OutputDto PostSunset([FromBody] InputDto input)
+        {
+            return logicLB.requestSunset(input);
+        }
+
+        [HttpPost("sun/sunrise")]
+        public OutputDto PostSunrise([FromBody] InputDto input)
+        {
+            return logicLB.requestSunrise(input);
+        }
+
+
         [HttpDelete("machines")]
         public IActionResult DeleteMachine([FromBody] Machine machine)
         {
