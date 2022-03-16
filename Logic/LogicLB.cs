@@ -88,25 +88,7 @@ namespace LoadBalancer.Logic
             }
         }
 
-        public bool chargeInitialConfig(string file)
-        {
-            try
-            {
-                using (StreamReader r = new StreamReader(file))
-                {
-                    string json = r.ReadToEnd();
-                    Program.machines = JsonConvert.DeserializeObject<List<Machine>>(json);
-                }
-
-                return true;
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-                Program.machines = new List<Machine>();
-                return false;
-            }
-        }
+        
 
     }
 }
