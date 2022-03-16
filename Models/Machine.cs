@@ -4,7 +4,7 @@ namespace LoadBalancer.Models
 {
     public class Machine
     {
-        public Machine(Uri url, string name, bool property, int maxReq, int reqUsed)
+        public Machine(Uri url, string name, bool property, int maxReq, int reqUsed = 0)
         {
             Url = url;
             Name = name;

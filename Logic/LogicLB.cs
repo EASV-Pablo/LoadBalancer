@@ -42,12 +42,12 @@ namespace LoadBalancer.Logic
             var response = client.PostAsync<OutputDto>(request);
             response.Wait();
 
-            //lock (Program.machines)
-            //{
-            //    updateMachineState(machine, false);
-            //}
+            lock (Program.machines)
+            {
+                updateMachineState(machine, false);
+            }
 
-            updateMachineState(machine, false);
+            //updateMachineState(machine, false);
 
             return response;
         }
@@ -85,6 +85,11 @@ namespace LoadBalancer.Logic
                 Program.machines.Find(x => x == machine).ReqUsed--;
             }
         }
+
+        //public bool tryParseMachine()
+        //{
+
+        //}
 
     }
 }
