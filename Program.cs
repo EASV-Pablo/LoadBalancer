@@ -1,3 +1,4 @@
+using LoadBalancer.Logic;
 using LoadBalancer.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
@@ -10,13 +11,12 @@ namespace LoadBalancer
     public class Program
     {
         public static string name = "Load Balancer";
+        public static string fileConfig = @"initialConfig.json";
         public static List<Machine> machines;
 
         public static void Main(string[] args)
         {
-            machines = new List<Machine>();
-            machines.Add(new Machine(new Uri("http://192.168.0.13:5100/"), "Raspi 3", true, 10, 0));
-            machines.Add(new Machine(new Uri("http://192.168.0.14:5100/"), "Raspi 4", true, 30, 0));
+            new LogicLB().chargeInitialConfig(fileConfig);
             CreateHostBuilder(args).Build().Run();
         }
 

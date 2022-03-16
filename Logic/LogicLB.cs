@@ -1,7 +1,9 @@
 ﻿using LoadBalancer.Models;
+using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -86,10 +88,25 @@ namespace LoadBalancer.Logic
             }
         }
 
-        //public bool tryParseMachine()
-        //{
+        public bool chargeInitialConfig(string file)
+        {
+            try
+            {
+                using (StreamReader r = new StreamReader(file))
+                {
+                    string json = r.ReadToEnd();
+                    Program.machines = JsonConvert.DeserializeObject<List<Machine>>(json);
+                }
 
-        //}
+                return true;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Program.machines = new List<Machine>();
+                return false;
+            }
+        }
 
     }
 }

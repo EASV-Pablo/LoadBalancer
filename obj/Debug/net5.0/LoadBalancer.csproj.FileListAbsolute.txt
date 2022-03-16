@@ -48,3 +48,5 @@ C:\Users\P_MaN\Documents\GitHub\LoadBalancer\obj\Debug\net5.0\scopedcss\bundle\L
 C:\Users\P_MaN\Documents\GitHub\LoadBalancer\obj\Debug\net5.0\LoadBalancer.RazorTargetAssemblyInfo.cache
 C:\Users\P_MaN\Documents\GitHub\LoadBalancer\obj\Debug\net5.0\LoadBalancer.csproj.CopyComplete
 C:\Users\P_MaN\Documents\GitHub\LoadBalancer\obj\Debug\net5.0\LoadBalancer.genruntimeconfig.cache
+C:\Users\P_MaN\Documents\GitHub\LoadBalancer\bin\Debug\net5.0\initialConfig.json
+C:\Users\P_MaN\Documents\GitHub\LoadBalancer\bin\Debug\net5.0\Newtonsoft.Json.dll
