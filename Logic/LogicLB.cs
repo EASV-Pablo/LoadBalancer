@@ -42,6 +42,11 @@ namespace LoadBalancer.Logic
             var response = client.PostAsync<OutputDto>(request);
             response.Wait();
 
+            //lock (Program.machines)
+            //{
+            //    updateMachineState(machine, false);
+            //}
+
             updateMachineState(machine, false);
 
             return response;
