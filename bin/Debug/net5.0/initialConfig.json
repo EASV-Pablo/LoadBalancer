@@ -3,12 +3,12 @@
     "url": "http://192.168.0.13:5100",
     "name": "Raspi 3",
     "owned": true,
-    "MaxReq": 10
+    "maxReq": 10
   },
   {
     "url": "http://192.168.0.14:5100",
     "name": "Raspi 4",
     "owned": true,
-    "MaxReq": 30
+    "maxReq": 30
   }
 ]
