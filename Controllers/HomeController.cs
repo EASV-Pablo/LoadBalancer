@@ -2,8 +2,6 @@
 using LoadBalancer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using RestSharp;
-using System;
 using System.Collections.Generic;
 
 namespace LoadBalancer.Controllers
@@ -28,19 +26,6 @@ namespace LoadBalancer.Controllers
 
         [HttpGet("sun/sunrise")]
         public OutputDto GetSunrise([FromBody] InputDto input)
-        {
-            return logicLB.requestSunrise(input);
-        }
-
-
-        [HttpPost("sun/sunset")]
-        public OutputDto PostSunset([FromBody] InputDto input)
-        {
-            return logicLB.requestSunset(input);
-        }
-
-        [HttpPost("sun/sunrise")]
-        public OutputDto PostSunrise([FromBody] InputDto input)
         {
             return logicLB.requestSunrise(input);
         }

@@ -5,14 +5,13 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace LoadBalancer
 {
     public class Program
     {
         public static string name = "Load Balancer";
-        public static string fileConfig = @"initialConfig.json";
+        public static string fileConfig = @"InitialConfig.json";
 
         public static List<Machine> machines;
 

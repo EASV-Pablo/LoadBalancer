@@ -1,9 +1,7 @@
 ﻿using LoadBalancer.Models;
-using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,11 +14,11 @@ namespace LoadBalancer.Logic
             Machine machine;
             lock (Program.machines)
             {
-                machine = Program.machines.OrderByDescending(x => x.Property)
+                machine = Program.machines.OrderByDescending(x => x.Owned)
                                                      .ThenBy(x => decimal.Divide(x.ReqUsed, x.MaxReq) * 100)
                                                      .First();
                 updateMachineState(machine, true);
-            }       
+            }
 
             return machine;
         }
@@ -36,7 +34,7 @@ namespace LoadBalancer.Logic
         }
 
         private Task<OutputDto> doRequest(InputDto input, Machine machine, string urlEndpoint)
-        {            
+        {
 
             RestClient client = new RestClient(new Uri(machine.Url, urlEndpoint));
             var request = new RestRequest();
@@ -71,7 +69,7 @@ namespace LoadBalancer.Logic
         {
             Program.machines.Remove(machine);
         }
-    
+
         public List<Machine> getAllMachines()
         {
             return Program.machines;
@@ -79,7 +77,8 @@ namespace LoadBalancer.Logic
 
         private void updateMachineState(Machine machine, bool inUse)
         {
-            if (inUse) {
+            if (inUse)
+            {
                 Program.machines.Find(x => x == machine).ReqUsed++;
             }
             else
@@ -88,7 +87,7 @@ namespace LoadBalancer.Logic
             }
         }
 
-        
+
 
     }
 }
