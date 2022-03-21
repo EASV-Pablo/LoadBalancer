@@ -3,6 +3,7 @@ using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LoadBalancer.Logic
@@ -23,6 +24,7 @@ namespace LoadBalancer.Logic
                     if (machine is not null)                   
                         updateMachineState(machine, true);
                 }
+                Thread.Sleep(10);
             }
             while (machine is null);
             return machine;

@@ -3,18 +3,18 @@
     "url": "http://192.168.0.13:5100",
     "name": "Raspi 3",
     "owned": true,
-    "maxReq": 2
+    "maxReq": 5
   },
   {
     "url": "http://192.168.0.14:5100",
     "name": "Raspi 4",
     "owned": true,
-    "maxReq": 2
+    "maxReq": 10
   },
   {
     "url": "https://sunapiserver.herokuapp.com",
     "name": "heroku Server",
     "owned": false,
-    "maxReq": 1
+    "maxReq": 20
   }
 ]
