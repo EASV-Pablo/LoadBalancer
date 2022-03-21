@@ -12,14 +12,19 @@ namespace LoadBalancer.Logic
         public Machine getMachine()
         {
             Machine machine;
-            lock (Program.machines)
+            do
             {
-                machine = Program.machines.OrderByDescending(x => x.Owned)
-                                                     .ThenBy(x => decimal.Divide(x.ReqUsed, x.MaxReq) * 100)
-                                                     .First();
-                updateMachineState(machine, true);
+                lock (Program.machines)
+                {
+                    machine = Program.machines.Where(x => x.ReqUsed < x.MaxReq)
+                                              .OrderByDescending(x => x.Owned)
+                                              .ThenBy(x => decimal.Divide(x.ReqUsed, x.MaxReq) * 100)
+                                              .FirstOrDefault();
+                    if (machine is not null)                   
+                        updateMachineState(machine, true);
+                }
             }
-
+            while (machine is null);
             return machine;
         }
 
@@ -39,7 +44,7 @@ namespace LoadBalancer.Logic
             RestClient client = new RestClient(new Uri(machine.Url, urlEndpoint));
             var request = new RestRequest();
             request.AddJsonBody(input);
-            var response = client.PostAsync<OutputDto>(request);
+            var response = client.GetAsync<OutputDto>(request);
             response.Wait();
 
             lock (Program.machines)
