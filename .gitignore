@@ -1,0 +1,9 @@
+
+obj/project.nuget.cache
+obj/project.assets.json
+obj/LoadBalancer.csproj.nuget.g.props
+obj/LoadBalancer.csproj.nuget.dgspec.json
+obj/Debug/net5.0/LoadBalancer.csproj.AssemblyReference.cache
+obj/Debug/net5.0/LoadBalancer.assets.cache
+.vs/LoadBalancer/v16/.suo
+.vs/LoadBalancer/DesignTimeBuild/.dtbcache.v2
